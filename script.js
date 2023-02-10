@@ -72,7 +72,7 @@ function addNewProduct() {
             }
             products.push(product);
             localStorage.setItem("products", JSON.stringify(products));
-            window.location.href = "/";
+            window.location.href = "https://parthatsimform.github.io/crud-opration/";
         }
     })
 }
