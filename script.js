@@ -31,6 +31,7 @@ window.addEventListener("popstate", async (e) => {
 
 const routes = {
     "": "./pages/allproducts.html",
+    "/": "./pages/allproducts.html",
     "#": "./pages/allproducts.html",
     "#allProducts": "./pages/allproducts.html",
     "#addProduct": "./pages/addproduct.html",
@@ -72,7 +73,7 @@ function addNewProduct() {
             }
             products.push(product);
             localStorage.setItem("products", JSON.stringify(products));
-            window.location.href = "https://parthatsimform.github.io/crud-opration/";
+            window.location.href = "/";
         }
     })
 }
