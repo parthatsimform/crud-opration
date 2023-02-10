@@ -1,0 +1,38 @@
+<section id="allProductsSection">
+    <h2 class="allproductsHeading">Products</h2>
+    <div class="filter-sort">
+        <span class="search">
+            <input type="number" id="searchinput" class="form-control" name="searchinput" placeholder="Search By ProductID">
+        </span>
+        <span class="sort">
+            <div class="dropdown">
+                <label for="sortdropdown" class="form-label">Sort By: </label>
+                <button name="sortdropdown" id="sortdropdown" class="btn btn-sm btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Select
+                </button>
+                <ul class="dropdown-menu">
+                    <li class="dropdown-item" id="sortbyid">Product ID</li>
+                    <li class="dropdown-item" id="sortbyname">Product Name</li>
+                    <li class="dropdown-item" id="sortbyprice">Price</li>
+                </ul>
+                <button id="increasing" class="sortarrow"><i class="fa-solid fa-arrow-up-long"></i></button>
+                <button id="decreasing" class="sortarrow"><i class="fa-solid fa-arrow-down-long"></i></button>
+            </div> 
+        </span>
+    </div>
+    <table id="product-table">
+        <thead>
+            <tr>
+                <th class="col-id">Product ID</th>
+                <th class="col-name">Product Name</th>
+                <th class="col-image">Image</th>
+                <th class="col-price">Price</th>
+                <th class="col-description">Description</th>
+                <th class="col-actions" colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="product-list">
+
+        </tbody>
+    </table>
+</section>

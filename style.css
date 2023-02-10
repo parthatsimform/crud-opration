@@ -1,0 +1,169 @@
+.navbar-brand{
+    color: white;
+}
+.navbar-brand:hover{
+    color: yellow;
+}
+.navbar-brand:focus{
+    color: white;
+}
+.nav-link{
+    color: white;
+}
+.nav-link:hover{
+    color: aqua;
+}
+.nav-link:focus{
+    color: white;
+}
+
+#product-table{
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+tr{
+    height: 50px;
+}
+th{
+    border-bottom: 1px solid black;
+    background-color: #f5f5f5;  
+}
+td{
+    border-bottom: 1px solid gainsboro;
+    margin: 0 50px;
+    padding: 10px 10px;
+    width: 14%;
+}
+tr:nth-child(even){
+    background-color: #f5f5f5;
+}
+.imgdisplay{
+    width: 100px;
+    height: auto;
+}
+.editbtn{
+    border: none;
+    background-color: #d4ffcc;
+    color: green;
+    border-radius: 5px;
+    padding: 2px 20px;
+}
+.deletebtn{
+    border: none;
+    background-color: #ffcccc;
+    color: red;
+    border-radius: 5px;
+    padding: 2px 10px;
+}
+#addProductSection, #allProductsSection, #editProductSection{
+    margin: 3rem 0;
+}
+.addProductHeading, .allproductsHeading, .editProductHeading{
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 2rem;
+}
+.filter-sort{
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-between;
+}
+.search{
+    display: flex;
+    align-items: baseline;
+    margin: 0 0 10px;
+}
+
+#searchinput{
+    width: 200px;
+    height: 35px;
+}
+
+/* For remove arrows from input tag */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.sort{
+    text-align: right;
+}
+#sortdropdown{
+    margin-left: 5px;
+}
+.dropdown-item{
+    cursor: pointer;
+}
+.sortarrow{
+    margin: 0 2px;
+    border: none;
+    background-color: white;
+    border-radius: 5px;
+}
+.activesortarrow{
+    background-color: black;
+    color: white;
+}
+#productForm, #editproductForm{
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.producterror{
+    padding: 40px 0;
+    font-size: 20px;
+}
+.submitBtn{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: green;
+    background-color: #d4ffcc;
+}
+.submitBtn:hover{
+    background-color: green;
+    color: #d4ffcc;
+}
+.resetBtn{
+    border: none;
+    border-radius: 5px;
+    padding: 5px 20px;
+    color: red;
+    background-color: rgb(255, 201, 201);
+}
+.resetBtn:hover{
+    background-color: red;
+    color: rgb(255, 201, 201);
+}
+#form-buttons{
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+@media(max-width:420px){
+    .filter-sort{
+        display: block;
+        margin: 0 10px;
+    }
+    .sort{
+        margin: 50px 0;
+        padding: 50px 0;
+        text-align: left;
+    }
+}
