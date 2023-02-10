@@ -73,7 +73,7 @@ function addNewProduct() {
             }
             products.push(product);
             localStorage.setItem("products", JSON.stringify(products));
-            window.location.href = "/";
+            window.location.href = "/crud-opration/";
         }
     })
 }
@@ -172,7 +172,7 @@ function deleteproduct(id) {
     products = copyproducts;
     localStorage.setItem("products", JSON.stringify(products));
     localStorage.removeItem(id);
-    window.location.href = "/";
+    window.location.href = "/crud-opration/";
 }
 
 function editproduct(id) {
@@ -201,7 +201,7 @@ const editfunction = (pid) => {
                 imagehandler(editproduct.elements.productImage.files[0],editproduct.productID.value);
             }
             localStorage.setItem("products", JSON.stringify(products));
-            window.location.href = "/";
+            window.location.href = "/crud-opration/";
         })
     }, 100)
 }
