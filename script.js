@@ -54,28 +54,58 @@ Array.from(selected).forEach(element => {
 function addNewProduct() {
     document.getElementById("productForm").addEventListener("submit", async (e) => {
         e.preventDefault();
-        let productID = e.target.productID.value;
-        let productName = e.target.productName.value;
-        let productImage= e.target.productImage.files[0];
-        let productPrice = e.target.productPrice.value;
-        let productDescription = e.target.productDescription.value;
-        const available = await products.find(product => product.id == productID);
-        if (available) {
-            window.alert("Product with ID=" + productID + " already exists. Please enter a different product ID.");
-            e.target.productID.focus();
-        } else {
-            imagehandler(productImage,productID);
-            let product = {
-                id: productID,
-                name: productName,
-                price: productPrice,
-                description: productDescription
+        if (validateForm(e.target)) {
+            let productID = e.target.productID.value;
+            let productName = e.target.productName.value;
+            let productImage= e.target.productImage.files[0];
+            let productPrice = e.target.productPrice.value;
+            let productDescription = e.target.productDescription.value;
+            const available = await products.find(product => product.id == productID);
+            if (available) {
+                window.alert("Product with ID=" + productID + " already exists. Please enter a different product ID.");
+                e.target.productID.focus();
+            } else {
+                imagehandler(productImage,productID);
+                let product = {
+                    id: productID,
+                    name: productName,
+                    price: productPrice,
+                    description: productDescription
+                }
+                products.push(product);
+                localStorage.setItem("products", JSON.stringify(products));
+                window.location.href = "/crud-opration/";
             }
-            products.push(product);
-            localStorage.setItem("products", JSON.stringify(products));
-            window.location.href = "/crud-opration/";
         }
     })
+}
+
+function validateForm(form) {
+    if (window.location.hash=="#addProduct" && form.productID.value == "") {
+        form.productID.style.border="1px solid red";
+        form.productID.setAttribute("placeholder", "Enter Product ID");
+        return false;
+    }
+    if (form.productName.value == "") {
+        form.productName.style.border="1px solid red";
+        form.productName.setAttribute("placeholder", "Enter Product Name");
+        return false;
+    }
+    if (window.location.hash=="#addProduct" && form.productImage.value == "") {
+        form.productImage.style.border="1px solid red";
+        return false;
+    }
+    if (form.productPrice.value == "") {
+        form.productPrice.style.border="1px solid red";
+        form.productPrice.setAttribute("placeholder", "Enter Product Price");
+        return false;
+    }
+    if (form.productDescription.value == "") {
+        form.productDescription.style.border="1px solid red";
+        form.productDescription.setAttribute("placeholder", "Enter Product Description");
+        return false;
+    }
+    return true;
 }
 
 function imagehandler(image,id) {
@@ -172,36 +202,39 @@ function deleteproduct(id) {
     products = copyproducts;
     localStorage.setItem("products", JSON.stringify(products));
     localStorage.removeItem(id);
-    window.location.href = "/crud-opration/";
+    showData();
 }
 
 function editproduct(id) {
     window.location.hash = "#editProduct";
     let p_id = products.findIndex(product => product.id == id);
-    localStorage.setItem("editProductId", p_id);                //store edit-product-id in local storage to be able retrieve when reload
-    editfunction(p_id);
+    localStorage.setItem("editProductId", JSON.stringify(p_id));                //store edit-product-id in local storage to be able retrieve when reload
+    if (p_id) {
+        editfunction(p_id);
+    }
 }
 
 const editfunction = (pid) => {
-    setTimeout(() => {                                          //setTimeout to wait for get the form id
-        let editproduct = document.getElementById("editproductForm");
-        editproduct.elements.productID.value = products[pid].id;
-        editproduct.elements.productName.value = products[pid].name;
-        editproduct.elements.productPrice.value = products[pid].price;
-        editproduct.elements.productDescription.value = products[pid].description;
-
+    let editproduct = document.getElementById("editproductForm");
+    if (editproduct) {
+        editproduct.productID.value = products[pid].id;
+        editproduct.productName.value = products[pid].name;
+        editproduct.productPrice.value = products[pid].price;
+        editproduct.productDescription.value = products[pid].description;
         editproduct.addEventListener("submit", (e) => {             
             e.preventDefault();
-            products[pid].id = editproduct.productID.value;
-            products[pid].name = editproduct.productName.value;
-            products[pid].price = editproduct.productPrice.value;
-            products[pid].description = editproduct.productDescription.value;
+            if (validateForm(e.target)) {
+                products[pid].id = editproduct.productID.value;
+                products[pid].name = editproduct.productName.value;
+                products[pid].price = editproduct.productPrice.value;
+                products[pid].description = editproduct.productDescription.value;
 
-            if (editproduct.elements.productImage.value) {
-                imagehandler(editproduct.elements.productImage.files[0],editproduct.productID.value);
+                if (editproduct.elements.productImage.value) {
+                    imagehandler(editproduct.elements.productImage.files[0],editproduct.productID.value);
+                }
+                localStorage.setItem("products", JSON.stringify(products));
+                window.location.href = "/crud-opration/";
             }
-            localStorage.setItem("products", JSON.stringify(products));
-            window.location.href = "/crud-opration/";
         })
-    }, 100)
+    }  
 }
