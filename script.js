@@ -128,7 +128,6 @@ function filterbyid() {
         let searchproduct = [...products]
         searchproduct = searchproduct.filter(product => product.id == e.target.value);
         if (e.target.value == "") {
-            console.log("called");
             searchproduct = products;
         }
         displaydata(searchproduct);
