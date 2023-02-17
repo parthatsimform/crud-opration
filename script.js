@@ -110,7 +110,7 @@ function validateForm(form) {
         form.productPrice.setAttribute("placeholder", "Enter Product Price");
         return false;
     } else if (form.productPrice.value < 1) {
-        form.productID.style.border = "1px solid red";
+        form.productPrice.style.border = "1px solid red";
         form.productPrice.value="";
         form.productPrice.setAttribute("placeholder", "Product price must be a positive value");
         return false;
