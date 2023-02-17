@@ -79,31 +79,50 @@ function addNewProduct() {
         }
     })
 }
-
 function validateForm(form) {
     if (window.location.hash=="#addProduct" && form.productID.value == "") {
         form.productID.style.border="1px solid red";
         form.productID.setAttribute("placeholder", "Enter Product ID");
         return false;
+    } else if (form.productID.value < 1 || form.productID.value.includes(".")) {
+        form.productID.style.border = "1px solid red";
+        form.productID.value="";
+        form.productID.setAttribute("placeholder", "Product ID must be a positive integer");
+        return false;
+    } else {
+        form.productID.style.border = "1px solid green";
     }
     if (form.productName.value == "") {
         form.productName.style.border="1px solid red";
         form.productName.setAttribute("placeholder", "Enter Product Name");
         return false;
+    } else {
+        form.productName.style.border = "1px solid green";
     }
     if (window.location.hash=="#addProduct" && form.productImage.value == "") {
         form.productImage.style.border="1px solid red";
         return false;
+    } else {
+        form.productImage.style.border = "1px solid green";
     }
     if (form.productPrice.value == "") {
-        form.productPrice.style.border="1px solid red";
+        form.productPrice.style.border = "1px solid red";
         form.productPrice.setAttribute("placeholder", "Enter Product Price");
         return false;
+    } else if (form.productPrice.value < 1) {
+        form.productID.style.border = "1px solid red";
+        form.productPrice.value="";
+        form.productPrice.setAttribute("placeholder", "Product price must be a positive value");
+        return false;
+    } else {
+        form.productPrice.style.border = "1px solid green";
     }
     if (form.productDescription.value == "") {
         form.productDescription.style.border="1px solid red";
         form.productDescription.setAttribute("placeholder", "Enter Product Description");
         return false;
+    } else {
+        form.productDescription.style.border = "1px solid green";
     }
     return true;
 }
