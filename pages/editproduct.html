@@ -11,7 +11,8 @@
         </div>
         <div class="mb-3 col-lg-5 col-11">
             <label class="form-check-label" for="productImage">Image</label>
-            <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*">
+            <input type="file" class="form-control" id="productImage" name="productImage" accept="image/*" style="display: none;" onchange="showimg(this)">
+            <img src="" id="selectedimg" alt="">
         </div>
         <div class="mb-3 col-lg-5 col-11">
             <label for="productPrice" class="form-label">Price</label>

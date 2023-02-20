@@ -128,6 +128,13 @@ input[type=number] {
     padding: 40px 0;
     font-size: 20px;
 }
+#selectedimg{
+    margin-top: 10px;
+    display: block;
+    height: 70px;
+    width: auto;
+    cursor: pointer;
+}
 .submitBtn{
     border: none;
     border-radius: 5px;
